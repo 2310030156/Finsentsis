@@ -1,3 +1,130 @@
-@tailwind base;
+/*@tailwind base;
 @tailwind components;
-@tailwind utilities;
+@tailwind utilities;*/
+.auth-bg{
+min-height:100vh;
+display:flex;
+justify-content:center;
+align-items:center;
+background:radial-gradient(circle at center,#3a4042 0%,#0b0b0b 70%);
+padding:20px;
+}
+
+.auth-container{
+width:100%;
+max-width:460px;
+text-align:center;
+color:white;
+}
+
+.logo{
+width:44px;height:44px;background:black;border-radius:50%;
+margin:0 auto 14px;display:flex;align-items:center;justify-content:center;
+}
+
+.badge{background:#1a1a1a;padding:6px 14px;border-radius:999px;font-size:12px;margin-bottom:12px;}
+.title{font-size:34px;font-weight:600;}
+.subtitle{color:#9ca3af;margin:6px 0 24px;}
+
+.social-row{display:flex;justify-content:center;gap:12px;margin-bottom:22px;}
+.social-btn{width:48px;height:48px;background:#0a0a0a;border-radius:10px;color:white;}
+
+/*.divider{display:flex;align-items:center;gap:10px;color:#9ca3af;font-size:12px;margin-bottom:22px;}
+.divider span{flex:1;height:1px;background:#2a2a2a;}*/
+.divider {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: white;              /* 👈 make OR white */
+  font-size: 12px;
+  margin-bottom: 22px;
+}
+
+.divider span {
+  flex: 1;
+  height: 1px;
+  background: #2a2a2a;       /* keep lines subtle */
+}
+
+.form{display:flex;flex-direction:column;gap:14px;}
+.auth-input{background:#050505;border:1px solid #2a2a2a;padding:14px;border-radius:10px;color:white;}
+
+.btn-row{display:flex;gap:12px;margin-top:6px;}
+.btn-primary{flex:1;background:#9cff2e;color:black;padding:14px;border-radius:10px;}
+.btn-secondary{flex:1;background:#e5e5e5;color:black;padding:14px;border-radius:10px;}
+.full{width:100%;}
+
+.otp-row{display:flex;justify-content:center;gap:10px;margin:22px 0;}
+.otp-box{width:48px;height:48px;background:#050505;border:1px solid #2a2a2a;border-radius:10px;text-align:center;color:white;}
+
+.bottom-text{margin-top:28px;font-size:12px;color:#6b7280;}
+
+@media(max-width:480px){
+.title{font-size:24px;}
+.btn-row{flex-direction:column;}
+}
+/* Social button container */
+.social-row {
+  display: flex;
+  justify-content: center;
+  gap: 14px;
+  margin-bottom: 24px;
+}
+
+/* Small curved black rectangle */
+.social-btn {
+  width: 46px;
+  height: 46px;
+  background: #0b0b0b;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  cursor: pointer;
+}
+
+/* Logo size inside button */
+.social-btn img {
+  width: 20px;
+  height: 20px;
+  object-fit: contain;
+}
+/* Top circular logo */
+.logo {
+  width: 60px;
+  height: 60px;
+  background: #000;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 20px;
+}
+
+.logo img {
+  width: 35px;   /* 👈 reduce this */
+  height: 35px;  /* 👈 reduce this */
+  object-fit: contain;
+}
+.social-btn {
+  width: 60px;
+  height: 52px;
+  background: #111;
+  border-radius: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.social-btn img {
+  width: 28px;
+  height: 28px;
+  object-fit: contain;
+}
+
+/* Make Google logo slightly bigger */
+.social-btn img[alt="Google"] {
+  width: 50px;
+  height: 50px;
+}

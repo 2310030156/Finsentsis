@@ -1,8 +1,17 @@
-import { createContext, useState, ReactNode, useEffect } from "react";
+import {
+  createContext,
+  useContext,
+  useState,
+  useEffect,
+  ReactNode,
+} from "react";
+
+type Role = "ADMIN" | "EMPLOYEE";
 
 interface User {
-  name: string;
-  role: string;
+  id: string;
+  email: string;
+  role: Role;
 }
 
 interface AuthContextType {
@@ -11,7 +20,7 @@ interface AuthContextType {
   logout: () => void;
 }
 
-export const AuthContext = createContext<AuthContextType | undefined>(undefined);
+const AuthContext = createContext<AuthContextType | undefined>(undefined);
 
 interface Props {
   children: ReactNode;
@@ -20,6 +29,7 @@ interface Props {
 export const AuthProvider = ({ children }: Props) => {
   const [user, setUser] = useState<User | null>(null);
 
+  // Load user from localStorage on refresh
   useEffect(() => {
     const storedUser = localStorage.getItem("user");
     if (storedUser) {
@@ -42,4 +52,14 @@ export const AuthProvider = ({ children }: Props) => {
       {children}
     </AuthContext.Provider>
   );
+};
+
+export const useAuth = () => {
+  const context = useContext(AuthContext);
+
+  if (!context) {
+    throw new Error("useAuth must be used inside AuthProvider");
+  }
+
+  return context;
 };

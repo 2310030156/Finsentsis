@@ -40,3 +40,20 @@
 .read-the-docs {
   color: #888;
 }
+/* Top circular logo */
+.logo {
+  width: 44px;
+  height: 44px;
+  background: #000;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 18px;
+}
+
+.logo img {
+  width: 22px;
+  height: 22px;
+  object-fit: contain;
+}
