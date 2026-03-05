@@ -3,55 +3,29 @@ import { useNavigate } from "react-router-dom";
 import AuthLayout from "../../components/auth/AuthLayout";
 import AuthTabs from "../../components/auth/AuthTabs";
 import AuthForm from "../../components/auth/AuthForm";
-develop
-import { useAuth } from "../../context/AuthContext";
-
 import { useAuth } from "../../context/useAuth";
-main
 
 const Login = () => {
   const [email, setEmail] = useState("");
   const [step, setStep] = useState<"login" | "otp">("login");
-develop
-
-  // 🔥 Timer states
   const [timer, setTimer] = useState(60);
-  const [expired, setExpired] = useState(false);
-
-  const [timer, setTimer] = useState(60);
-main
 
   const inputRefs = useRef<(HTMLInputElement | null)[]>([]);
   const navigate = useNavigate();
   const { login } = useAuth();
 
- develop
-  // Focus first OTP box
-
   const isExpired = timer === 0;
 
   // Focus first OTP input
-main
   useEffect(() => {
     if (step === "otp") {
       inputRefs.current[0]?.focus();
     }
   }, [step]);
 
-develop
-  // 🔥 Timer logic
-  useEffect(() => {
-    if (step !== "otp") return;
-
-    if (timer === 0) {
-      setExpired(true);
-      return;
-    }
-
   // Timer logic
   useEffect(() => {
     if (step !== "otp" || timer === 0) return;
- main
 
     const interval = setInterval(() => {
       setTimer((prev) => prev - 1);
@@ -65,23 +39,10 @@ develop
     if (!email) return;
 
     setStep("otp");
-develop
-    setTimer(60);     // reset timer
-    setExpired(false);
-  };
-
-  const handleVerify = () => {
-    if (expired) {
-      alert("OTP Expired");
-      return;
-    }
-
-
     setTimer(30);
   };
 
   const handleVerify = () => {
- main
     const otp = inputRefs.current
       .map((input) => input?.value ?? "")
       .join("");
@@ -91,17 +52,9 @@ develop
       return;
     }
 
-develop
-    // Fake role logic
-    const fakeUser =
-      email.includes("admin")
-        ? { id: "1", email, role: "ADMIN" as const }
-        : { id: "2", email, role: "EMPLOYEE" as const };
-
     const fakeUser = email.includes("admin")
       ? { id: "1", email, role: "ADMIN" as const }
       : { id: "2", email, role: "EMPLOYEE" as const };
- main
 
     login(fakeUser);
 
@@ -111,8 +64,6 @@ develop
       navigate("/employee/dashboard");
     }
   };
-
- develop
 
   const handleResendOTP = () => {
     if (!isExpired) return; // 🔒 Block if timer not finished
@@ -138,7 +89,6 @@ develop
     });
   };
 
-main
   return (
     <AuthLayout
       badge="Welcome back!"
@@ -149,20 +99,6 @@ main
           : "Enter OTP received through mail"
       }
       bottomText={step === "login" ? "Don't have account?" : undefined}
-develop
-      bottomLink={step === "login" ? "/" : undefined}
-      bottomLinkText={step === "login" ? "Sign Up" : undefined}
-    >
-      {/* STEP 1 */}
-      {step === "login" && (
-        <>
-          <AuthTabs />
-
-          <div className="divider">
-            <span /> OR <span />
-          </div>
-
-
       bottomLink={step === "login" ? "/Requestademo" : undefined}
       bottomLinkText={step === "login" ? "Request a Demo" : undefined}
     >
@@ -172,7 +108,6 @@ develop
           <div className="divider">
             <span /> OR <span />
           </div>
- main
           <AuthForm>
             <form className="form" onSubmit={handleContinue}>
               <input
@@ -183,10 +118,6 @@ develop
                 onChange={(e) => setEmail(e.target.value)}
                 required
               />
- develop
-
-
- main
               <button type="submit" className="btn-primary full">
                 Continue
               </button>
@@ -195,10 +126,6 @@ develop
         </>
       )}
 
- develop
-      {/* STEP 2 OTP */}
-
- main
       {step === "otp" && (
         <>
           <div className="otp-row">
@@ -232,19 +159,7 @@ develop
             ))}
           </div>
 
- develop
-          {/* 🔥 TIMER DISPLAY */}
-          <div
-            style={{
-              marginBottom: "15px",
-              fontSize: "13px",
-              color: expired ? "red" : "#9ca3af",
-            }}
-          >
-            {expired
-              ? "OTP Expired"
-              : `Time remaining: ${timer}s`}
-   {/* Timer */}
+          {/* Timer */}
           <div
             style={{
               marginBottom: "8px",
@@ -272,14 +187,13 @@ develop
             >
               Resend OTP
             </button>
-main
           </div>
 
           <div className="btn-row">
             <button
               type="button"
               className="btn-secondary"
-              onClick={() => setStep("login")}
+              onClick={handleBackToLogin}
             >
               Back to Login
             </button>
@@ -288,10 +202,6 @@ main
               type="button"
               className="btn-primary"
               onClick={handleVerify}
- develop
-              disabled={expired}
-
- main
             >
               Continue
             </button>
@@ -302,8 +212,4 @@ main
   );
 };
 
- develop
 export default Login;
-
-export default Login;
- main
