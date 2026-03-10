@@ -1,5 +1,6 @@
 import { FeatureCard } from "../../components/Features/FeatureCard1";
 import type { FeatureData } from "../../components/Features/FeatureCard1";
+import glowLine from "../../assets/glowline.png";
 import {
   Speedometer,
   GearWidget,
@@ -93,20 +94,35 @@ export default function Features() {
 
       {/* ── CTA Section ── */}
       <section className="cta-section">
-        <div className="cta-glow" />
-        <h2 className="cta-heading">
-          Ready to<br />
-          Transform Your<br />
-          Compliance?
-        </h2>
-        <p className="cta-sub">
-          Join forward-thinking enterprises that are already using Finsentsis OS to simplify compliance and reduce risk.
-        </p>
-        <div className="cta-buttons">
-          <a href="#" className="btn-primary">Start free trial&nbsp;↗</a>
-          <a href="#" className="btn-secondary">Schedule Demo&nbsp;↗</a>
-        </div>
-      </section>
+
+  {/* LEFT beams */}
+<img src={glowLine} className="cta-glow-line glow-left glow-layer1" />
+<img src={glowLine} className="cta-glow-line glow-left glow-layer2" />
+<img src={glowLine} className="cta-glow-line glow-left glow-layer3" />
+
+{/* RIGHT beams */}
+<img src={glowLine} className="cta-glow-line glow-right glow-layer1" />
+<img src={glowLine} className="cta-glow-line glow-right glow-layer2" />
+<img src={glowLine} className="cta-glow-line glow-right glow-layer3" />
+
+
+  <div className="cta-content"></div>
+  <h2 className="cta-heading">
+    Ready to<br />
+    Transform Your<br />
+    Compliance?
+  </h2>
+
+  <p className="cta-sub">
+    Join forward-thinking enterprises that are already using Finsentsis OS to simplify compliance and reduce risk.
+  </p>
+
+  <div className="cta-buttons">
+    <a href="#" className="btn-primary">Start free trial ↗</a>
+    <a href="#" className="btn-secondary">Schedule Demo ↗</a>
+  </div>
+
+</section>
 
       {/* ── Footer ── */}
       <footer className="footer">
@@ -356,17 +372,31 @@ export default function Features() {
 
         /* ── Feature Cards Grid ── */
         .features-section {
-          padding: 0 37px 80px;
+          padding: 0 37px 0;
           display: flex; flex-direction: column; gap: 20px;
         }
-        .feature-card {
-          border: 2px solid #4B4B4B;
-          border-radius: 10px;
-          background: linear-gradient(253.41deg, #323232 38.52%, #080808 99.15%);
-          position: relative; overflow: hidden;
-          transition: border-color 0.3s; cursor: default;
-          height: 552px;
-        }
+          
+       .feature-card {
+  position: relative;
+  overflow: hidden;
+
+  height: 552px;
+
+  border-radius: 10px;
+  border: 1px solid rgba(255,255,255,0.18);
+
+  /* exact matte gradient like image */
+  background: linear-gradient(
+    90deg,
+    #050505 0%,
+    #111111 20%,
+    #1a1a1a 40%,
+    #2a2a2a 65%,
+    #3a3a3a 100%
+  );
+
+  transition: border-color 0.3s ease;
+}
         .feature-card--split {
           display: grid;
           grid-template-columns: 50% 50%;
@@ -404,10 +434,12 @@ export default function Features() {
           border-left: none;
         }
 
+   
+
         /* Number box — 109x109px, border-radius 10px */
         .feature-number-box {
           display: inline-flex; align-items: center; justify-content: center;
-          width: 100px; height: 100px;
+          width: 109px; height: 109px;
           border: 1px solid rgba(255,255,255,0.1); border-radius: 10px;
           background: #1a1a1a;
           font-family: 'Inter Display', 'Inter', sans-serif; font-size: 32px; font-weight: 500;
@@ -416,7 +448,7 @@ export default function Features() {
         }
         .feature-title {
           font-family: 'Inter Display', 'Inter', sans-serif;
-          font-size: 30px;
+          font-size: 40px;
           font-weight: 500;
           font-style: normal;
           color: #FFFFFF;
@@ -441,14 +473,84 @@ export default function Features() {
        
 
         /* ── CTA Section ── */
-        .cta-section {
-  position: relative; 
-  overflow: hidden;
-  padding: 50px 40px 140px;
-  text-align: center; 
-  background: #0d0d0d;
+       .cta-section{
+  position:relative;
+  overflow:hidden;
+  
+  padding:40px 40px 160px;
+  text-align:center;
+  background:#0d0d0d;
 }
 
+.cta-content{
+  margin-top:180px;
+  position:relative;
+  z-index:1;
+}
+
+/* glow images */
+.cta-glow-line{
+  position:absolute;
+  width:900px;
+
+  pointer-events:none;
+  mix-blend-mode:screen;
+
+  opacity:0.8;
+}
+
+/* layer depth */
+
+.glow-layer1{
+  filter: blur(10px);
+  opacity:0.9;
+}
+
+.glow-layer2{
+  filter: blur(35px);
+  opacity:0.6;
+}
+
+.glow-layer3{
+  filter: blur(80px);
+  opacity:0.35;
+}
+
+
+/* top-left streak */
+.glow-left{
+  top:-120px;
+  left:-300px;
+  transform:rotate(-1deg);
+}
+
+/* bottom-right streak */
+.glow-right{
+  bottom:-150px;
+  right:-300px;
+  transform:rotate(-82deg) scaleX(-1);
+}
+
+/* gradient overlay to fade out glows at edges */
+.cta-section::before{
+  content:"";
+  position:absolute;
+  inset:0;
+
+  background:linear-gradient(
+    to bottom,
+    rgba(13,13,13,0) 0%,
+    rgba(13,13,13,0.5) 35%,
+    rgba(13,13,13,1) 70%
+  );
+
+  pointer-events:none;
+}
+
+.glow-soft{
+  opacity:0.35;
+  filter: blur(60px);
+}
 
 
 .cta-heading {
@@ -489,7 +591,7 @@ export default function Features() {
   gap: 6px;
   padding: 12px 24px; 
   border-radius: 999px;
-  background: #3dff8f; 
+  background: #9AFF2E; 
   color: #0a0a0a;
   font-family: 'DM Sans', sans-serif; 
   font-size: 14px; 
@@ -545,7 +647,7 @@ export default function Features() {
           font-size: 15px; color: #fff; margin-bottom: 18px;
         }
         .footer-brand-icon {
-          width: 22px; height: 22px; background: #3dff8f;
+          width: 22px; height: 22px; background: #9AFF2E;
           border-radius: 5px; display: flex; align-items: center; justify-content: center;
         }
         .footer-newsletter-label {
@@ -571,7 +673,7 @@ export default function Features() {
         .footer-input::placeholder { color: rgba(255,255,255,0.28); }
         .footer-input-btn {
           width: 32px; height: 32px; border-radius: 50%;
-          background: #3dff8f; border: none; cursor: pointer;
+          background: #9AFF2E; border: none; cursor: pointer;
           display: flex; align-items: center; justify-content: center;
           flex-shrink: 0; transition: opacity 0.2s;
         }
@@ -603,7 +705,7 @@ export default function Features() {
         /* ── Scrollbar ── */
         ::-webkit-scrollbar { width: 4px; }
         ::-webkit-scrollbar-track { background: #0d0d0d; }
-        ::-webkit-scrollbar-thumb { background: rgba(61,255,143,0.3); border-radius: 2px; }
+        ::-webkit-scrollbar-thumb { background: #9AFF2E; border-radius: 2px; }
 
         @media (max-width: 768px) {
           .footer-top { grid-template-columns: 1fr 1fr; }
@@ -624,7 +726,7 @@ export default function Features() {
           .hero-sub { font-size: 14px; }
         }
 
-        /* PAGE WRAPPER */
+  
 
   
 `}</style>
