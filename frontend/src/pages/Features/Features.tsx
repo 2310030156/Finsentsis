@@ -377,11 +377,7 @@ export default function Features() {
 
 
 
-        /* ── Scrollbar ── */
-        ::-webkit-scrollbar { width: 4px; }
-        ::-webkit-scrollbar-track { background: #0d0d0d; }
-        ::-webkit-scrollbar-thumb { background: #9AFF2E; border-radius: 2px; }
-
+      
         @media (max-width: 768px) {
           .footer-top { grid-template-columns: 1fr 1fr; }
           .nav-center { display: none; }
