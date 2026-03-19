@@ -1,6 +1,6 @@
 import React from "react";
 import PlanFeatureList from "./PlanFeatureList";
-import logoIcon from "../../assets/logo-in-pricingcards.png";
+import Finsentsis from "../../assets/logos/finsentsis.png";
 
 /**
  * Props for PricingCard component
@@ -26,26 +26,30 @@ const PricingCard: React.FC<PricingCardProps> = ({
   billingNote,
   buttonText,
   features,
-  highlighted = false,
+
 }) => {
   return (
     <div
   className={`relative overflow-hidden rounded-2xl border p-6
-    bg-[#171717] border-[#3B3B3B]
-    ${highlighted ? "shadow-[0_0_60px_rgba(154,255,46,0.35)]" : ""}
+    bg-[#1E1E1E] border-[#4B4B4B]
   `}
 >
     {/* Green gradient glow */}
 <div
-  className="pointer-events-none absolute bottom-[-40%] left-1/2
-  h-[80%] w-[140%] -translate-x-1/2
-  rounded-full bg-[radial-gradient(circle,rgba(154,255,46,0.35),transparent_70%)]
-  blur-3xl"
+  className="
+    pointer-events-none
+    absolute bottom-[-50%] left-1/2
+    h-[70%] w-[160%]
+    -translate-x-1/2
+    rounded-full
+    bg-[radial-gradient(circle_at_center,_#9AFF2E_20%,_rgba(154,255,46,0.6)_45%,_rgba(154,255,46,0.2)_45%,_transparent_70%)]
+    blur-3xl
+  "
 />
       {/* Top content */}
       <div>
         {/* Logo */}
-        <img src={logoIcon} alt="Finsentsis" className="h-8 w-8 mb-4" />
+        <img src={Finsentsis} alt="Finsentsis" className="h-8 w-8 mb-4 " />
 
         {/* Title */}
         <h3 className="text-xl font-semibold text-white">{title}</h3>
@@ -65,7 +69,7 @@ const PricingCard: React.FC<PricingCardProps> = ({
         <button
           className="mt-6 w-full rounded-lg bg-[#9AFF2E] py-2.5
           text-sm font-medium text-black transition
-          hover:bg-[#8BE629]"
+          hover:bg-[#9AFF2E]"
         >
           {buttonText}
         </button>
