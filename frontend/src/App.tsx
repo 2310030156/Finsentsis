@@ -5,7 +5,7 @@ import Home from "./pages/Home/Home";
 import Login from "./pages/Auth/Login";
 import Requestademo from "./pages/Auth/Requestademo";
 import Pricing from "./pages/Pricing/Pricing";
-import Team from "./pages/Team/Team";
+import Leadership from "./pages/Leadership/Leadership";
 import Contact from "./pages/contact/Contact";
 import Features from "./pages/Features/Features";
 
@@ -26,7 +26,7 @@ function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/Requestademo" element={<Requestademo />} />
           <Route path="/pricing" element={<Pricing />} />
-          <Route path="/team" element={<Team />} />
+          <Route path="/Leadership" element={<Leadership />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/features" element={<Features />} />
           
