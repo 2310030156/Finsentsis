@@ -3,6 +3,7 @@ import PricingCard from "../../components/pricing/PricingCard";
 import glowLine from "../../assets/glowline.png";
 import { Link } from "react-router-dom";
 import Footer from "../../components/Home/Footer";
+import Navbar from "../../components/Home/Navbar";
 
 const Pricing: React.FC = () => {
   const plans = [
@@ -65,6 +66,8 @@ const Pricing: React.FC = () => {
   return (
     <div className="min-h-screen bg-[#111111] text-white relative overflow-hidden">
 
+      <Navbar/>
+
       <section className="pricing-section">
 
         {/* 🔥 TOP WHITE RAYS */}
@@ -90,7 +93,7 @@ const Pricing: React.FC = () => {
         <img src={glowLine} className="cta-glow-line glow-right glow-layer4" />
         <img src={glowLine} className="cta-glow-line glow-right glow-layer5" />
 
-        <div className="relative z-20 max-w-[1100px] mx-auto px-6 pt-[180px]">
+        <div className="relative z-20 max-w-[1100px] mx-auto px-6 pt-[170px]">
 
           {/* HEADER */}
           <div className="text-center mb-16">
@@ -263,7 +266,7 @@ const Pricing: React.FC = () => {
 
 .glow-layer5{
   filter: blur(200px);
-  opacity:0;
+  opacity:0.3;
 }
 
 
