@@ -250,7 +250,7 @@ export default function SolutionPage() {
 .cta-section {
   position: relative;
   overflow: hidden;
-  padding: 160px 40px 200px;
+  padding: 140px 40px 200px;
 
   display: flex;
   flex-direction: column;
