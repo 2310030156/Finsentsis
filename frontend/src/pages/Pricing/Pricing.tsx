@@ -311,7 +311,7 @@ width: 1500px
 .cta-sub{
   font-size:14px;
   color:rgba(255,255,255,0.5);
-  max-width:340px;
+  max-width:440px;
   margin:0 auto 36px;
 }
 
