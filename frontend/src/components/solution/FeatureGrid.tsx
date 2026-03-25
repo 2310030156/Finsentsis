@@ -105,7 +105,7 @@ export default function FeatureGrid() {
 
       <style>{`
         .feature-wrapper {
-          max-width: 1404px;
+          max-width: 1450px;
           margin: 0 auto;
           padding: 0 24px 100px;
         }
@@ -115,29 +115,10 @@ export default function FeatureGrid() {
           position: relative;
           background: linear-gradient(180deg, #0d0f0d, #060807);
           border: 1px solid #222;
-          border-radius: 20px;
+          border-radius: 10px;
           padding: 32px;
           overflow: hidden;
-        }
-
-        /* CONTENT BLOCK (TEXT POSITION FIX) */
-        .content {
-          position: relative;
           z-index: 2;
-          max-width: 420px;
-        }
-
-        .card h3 {
-          font-size: 20px;
-          font-weight: 500;
-          color: #fff;
-          margin-bottom: 10px;
-        }
-
-        .card p {
-          font-size: 14px;
-          color: #777;
-          line-height: 1.5;
         }
 
         /* IMAGE BASE */
@@ -145,51 +126,61 @@ export default function FeatureGrid() {
           position: absolute;
           pointer-events: none;
           z-index: 1;
-          filter: drop-shadow(0 0 25px #9AFF2E);
+
         }
 
         /* TOP CARD */
+
         .large {
-          height: 320px;
-          margin-bottom: 24px;
-        }
+  width: 1404px; /* match Figma */
+  height: 434px; /* match Figma */
+  margin-bottom: 24px;
+  padding: 60px; /* more breathing like design */
+  background: #1E1E1E;
+}
 
-        .large-img {
-          right: 60px;
-          bottom: -10px;
-          width: 420px;
-        }
+.large-img {
+  width: 955px;
+  height: 546px;
+  position: absolute;
+  right: -10px;   /* push outside like Figma */
+  bottom: -90px; /* overflow down */
+  object-fit: contain;
+  z-index: 1;
+}
 
-        /* POLICY CARD */
-        .policy-img {
-          bottom: 0;
-          right: 0;
-          width: 80%;
-        }
 
-        /* GRAPH CARD */
-        .graph-img {
-          right: -40px;
-          bottom: -10px;
-          width: 120%;
-        }
 
-        /* MAP */
-        .map-img {
-          bottom: 0;
-          right: 0;
-          width: 100%;
-          opacity: 0.9;
-        }
+/* CONTENT FIX FOR PERFECT ALIGNMENT */
+.large .content {
+  max-width: 700px; /* match Figma width */
+  margin-top: 80px;
+  left:-50px;
+}
 
-        /* AUDIT */
-        .audit-img {
-          bottom: 0;
-          right: 0;
-          width: 110%;
-        }
+/* TITLE */
+.large h3 {
+  font-size: 36.23px;
+  font-weight: 500;
+  line-height: 1.06; /* 106% */
+  letter-spacing: 0;
+  color: #ffffff;
+  margin-bottom: 15px;
+}
 
-        /* GRID */
+/* DESCRIPTION */
+.large p {
+  font-size: 19.32px;
+  font-weight: 400;
+  line-height: 1; /* 100% */
+  color: #7f7f7f;
+  max-width: 596px;
+}
+
+
+/* MIDDLE ROW */
+
+   /* GRID */
         .row {
           display: grid;
           grid-template-columns: 1fr 1fr;
@@ -197,32 +188,245 @@ export default function FeatureGrid() {
           margin-bottom: 24px;
         }
 
+        /* POLICY CARD */
+
+.row .card:first-child {
+  width: 688px;              /* fills grid column */
+  height: 434px;            /* adjusted for diagram layout */
+ 
+  padding: 40px;            /* less than large (60px) */
+  border-radius: 10px;
+  position: relative;
+  overflow: hidden;
+  background: #1E1E1E;
+}
+
+        /* POLICY IMAGE FIX */
+
+        
+.policy-img {
+  position: absolute;
+  width: 594px;          /* control exact size */
+  height: 452px;
+  left: 45px;          /* push outside like Figma */
+  bottom: -170px;         /* slight overflow down */
+  object-fit: contain;
+  z-index: 1;
+}
+
+.row .card:first-child::after {
+  content: "";
+  position: absolute;
+
+  bottom: -170px;
+  left: 50%;
+  transform: translateX(-50%);
+
+  width: 823px;
+  height: 276px;
+
+  background: radial-gradient(
+    circle,
+    rgba(154, 255, 46, 0.52) 0%,
+    rgba(154, 255, 46, 0.25) 50%,
+    rgba(154, 255, 46, 0.1) 70%,
+    transparent 75%
+  );
+
+  filter: blur(130px);
+  z-index: 0;
+  pointer-events: none;
+}
+
+        /* TARGET POLICY CARD (middle left) */
+        
+.row .card:first-child .content {
+  max-width: 621px; /* from Figma */
+  margin-top: 0px;
+  left: -30px; /* slight left shift for better alignment with diagram */
+}
+
+/* TITLE */
+.row .card:first-child h3 {
+  font-size: 36.23px;
+  font-weight: 500;
+  line-height: 1.06;
+  color: #ffffff;
+  margin-bottom: 15px;
+}
+
+/* DESCRIPTION */
+.row .card:first-child p {
+  font-size: 19.32px;
+  font-weight: 400;
+  line-height: 1.06;
+  color: #7f7f7f;
+  max-width: 460px;
+}
+
+
+
+        /* GRAPH CARD */
+
+
+        /* GRAPH CARD SAME AS POLICY */
+.row .card:nth-child(2) {
+  width: 688px;
+  height: 434px;
+  padding: 40px;
+  border-radius: 10px;
+  position: relative;
+  overflow: hidden;
+  background: #1E1E1E;
+}
+
+  .graph-img {
+          left: 5px;
+          top: 5px;
+          width: 100%;
+        }
+
+/* TARGET GRAPH CARD (middle right) */
+
+.row .card:nth-child(2) .content {
+  max-width: 621px; /* same as policy */
+  margin-top: 0px;
+  left: -30px; /* same alignment */
+}
+
+/* TITLE */
+.row .card:nth-child(2) h3 {
+  font-family: "Inter Display", sans-serif;
+  font-size: 36.23px;
+  font-weight: 500;
+  line-height: 1.06;
+  letter-spacing: 0;
+  color: #ffffff;
+
+  width: 621px;           /* match Figma width */
+  white-space: nowrap;    /* force single line */
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* DESCRIPTION */
+
+.row .card:nth-child(2) p {
+  font-family: "Inter Display", sans-serif;
+  font-size: 19.32px;
+  font-weight: 400;
+  line-height: 1; /* FIX: was 1.06 */
+  letter-spacing: 0;
+  color: #7f7f7f;
+
+  max-width: 481px; /* match Figma */
+}
+
+
+
+      
+/* BOTTOM ROW */
+
         .row-bottom {
-          display: grid;
-          grid-template-columns: 2.7fr 1fr;
-          gap: 24px;
-        }
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+}
 
-        .wide {
-          height: 434px;
-        }
+/* WIDE CARD */
 
+.wide {
+  height: 434px;
+  width: 1004px; /* match Figma */
+  padding: 40px;
+  border-radius: 10px;
+  position: relative;
+  overflow: hidden;
+  background: #1E1E1E;
+}
+
+    .map-img {
+  position: absolute;
+  width: 100%;
+  bottom: 0;
+  right: 0;
+  object-fit: contain;
+  opacity: 0.9;
+}
+
+.wide .content {
+  max-width: 621px;
+  position: relative;
+  left: -30px;
+  margin-top: 200px;
+}
+
+.wide h3 {
+  font-size: 36.23px;
+  font-weight: 500;
+  line-height: 1.06;
+  color: #ffffff;
+  margin-bottom: 15px;
+}
+
+.wide p {
+  font-size: 19.32px;
+  font-weight: 400;
+  line-height: 1.06;
+  color: #7f7f7f;
+  max-width: 480px;
+}
+
+
+
+        /* AUDIT */
         .small {
-          height: 434px;
-        }
+  height: 434px;
+  width: 373px; /* match Figma */
+  padding: 40px;
+  border-radius: 10px;
+  position: relative;
+  overflow: hidden;
+  background: #1E1E1E;
+}
 
-        /* GREEN GLOW BACKGROUND */
-        .card::after {
-          content: "";
-          position: absolute;
-          bottom: -80px;
-          right: -80px;
-          width: 350px;
-          height: 350px;
-          filter: blur(80px);
-          z-index: 0;
-        }
+.audit-img {
+  position: absolute;
+  width: 322px;
+  height: 322px;
+  right: -10px;   /* slight push outside */
+  bottom: -60px;  /* slight overflow */
+  object-fit: contain;
+  opacity: 0.9;
+}
 
+.small .content {
+  max-width: 300px;
+  height:76px;
+  position: relative;
+  left: -30px;
+  margin-top: -30px;
+}
+.small h3 {
+  font-size: 36.23px;
+  font-weight: 500;
+  line-height: 1.06;
+  color: #ffffff;
+  margin-bottom: 15px;
+}
+
+.small p {
+  font-family: "Inter Display", sans-serif;
+  font-size: 19.32px;
+  font-weight: 400;
+  line-height: 1.06;           /* 106% */
+  letter-spacing: 0;
+  color: #7F7F7F;
+  max-width: 286px;         /* ✅ exact from Figma */
+}
+
+
+    
         /* RESPONSIVE */
         @media (max-width: 1024px) {
           .row-bottom {
