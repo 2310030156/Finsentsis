@@ -46,7 +46,8 @@ export default function CTA() {
 
 .cta-section{
   position:relative;
-  overflow:hidden;
+  overflow:visible;
+  z-index: 0;
   
   padding:40px 40px 160px;
   text-align:center;
@@ -63,6 +64,7 @@ export default function CTA() {
 .cta-glow-line{
   position:absolute;
   width:925px;
+  z-index:0;
 
   pointer-events:none;
   mix-blend-mode:screen;
@@ -131,6 +133,8 @@ export default function CTA() {
   content:"";
   position:absolute;
   inset:0;
+
+  
 
   background:
     linear-gradient(
