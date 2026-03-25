@@ -291,6 +291,9 @@ export default function Features() {
         .features-section {
           padding: 0 37px 0;
           display: flex; flex-direction: column; gap: 20px;
+          position: relative;   /* 🔥 ADD */
+  z-index: 2;           /* 🔥 ADD */
+}
         }
           
        .feature-card {
@@ -386,6 +389,10 @@ export default function Features() {
           width: 516px;
           max-width: 100%;
         }
+          .footer {
+  position: relative;
+  z-index: 2;
+}
 
 
 
